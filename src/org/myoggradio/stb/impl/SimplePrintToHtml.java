@@ -322,17 +322,17 @@ public class SimplePrintToHtml implements PrintToHtml
 			for (int i=0;i<ausw.size();i++)
 			{
 				wrt.write("<tr>");
-				wrt.write("<td>" + "\n");
+				wrt.write("<td style=\"font-size: 9px;\">" + "\n");
 				wrt.write("" + (i+1));
 				wrt.write("</td>" + "\n");
-				wrt.write("<td>" + "\n");
+				wrt.write("<td style=\"font-size: 9px;\">" + "\n");
 				Spieler spieler1 = ausw.get(i).getSpieler();
 				wrt.write(spieler1.getVorname() + " " + spieler1.getName());
 				wrt.write("</td>" + "\n");
 				for (int j=0;j<ausw.size();j++)
 				{
 					Spieler spieler2 = ausw.get(j).getSpieler();
-					wrt.write("<td>" + "\n");
+					wrt.write("<td style=\"font-size: 9px;\">" + "\n");
 					wrt.write(manager.getErgebnis(JGJParameter.turnier,spieler1,spieler2,rundeNummer+1));
 					wrt.write("</td>" + "\n");
 				}
