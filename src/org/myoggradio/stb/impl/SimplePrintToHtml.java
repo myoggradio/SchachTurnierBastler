@@ -18,6 +18,7 @@ import org.myoggradio.stb.PrintToHtml;
 import org.myoggradio.stb.Protokol;
 import org.myoggradio.stb.Runde;
 import org.myoggradio.stb.Spieler;
+import org.myoggradio.stb.Turnier;
 import org.myoggradio.stb.TurnierManager;
 import org.myoggradio.stbjgj.JGJFactory;
 import org.myoggradio.stbjgj.JGJParameter;
@@ -39,7 +40,7 @@ public class SimplePrintToHtml implements PrintToHtml
 			wrt.write("<head>" + "\n");
 			wrt.write("<meta charset=\"UTF-8\">" + "\n");
 			wrt.write("<style>" + "\n");
-			wrt.write("td {border:1px solid;}" + "\n");
+			wrt.write("td {border:1px solid;font-size: 9px}" + "\n");
 			wrt.write("th {border:2px solid;}" + "\n");
 			wrt.write("</style>" + "\n");
 			wrt.write("</head>" + "\n");
@@ -365,5 +366,87 @@ public class SimplePrintToHtml implements PrintToHtml
 			}
 		}
 		return erg;
+	}
+	@Override
+	public void printMatrix() 
+	{
+		try
+		{
+			Turnier turnier = Parameter.turnier;
+			ArrayList<Spieler> spielerList = turnier.getSpieler();
+			wrt.write("<p style=\"page-break-after: always;\">");
+			wrt.write("<table>");
+			wrt.write("<tr>");
+			wrt.write("<td></td>");
+			for (int i=0;i<spielerList.size();i++)
+			{
+				wrt.write("<td>" + (i+1) + "</td>");
+			}
+			wrt.write("</tr>");
+			for (int i=0;i<spielerList.size();i++)
+			{
+				wrt.write("<tr>");
+				wrt.write("<td>" + (i+1) + "</td>");
+				Spieler spieler = spielerList.get(i);
+				ArrayList<Partie> partien = turnier.getPartien(spieler);
+				//Protokol.write("SimplePrintToHtml:printMatrix:Anzahl Partien:" + partien.size());
+				for (int j=0;j<spielerList.size();j++)
+				{
+					wrt.write("<td>");
+					if (i!=j)
+					{
+						Spieler gegner = spielerList.get(j);
+						Partie partie = null;
+						boolean gegnerHatWeiss = false;
+						boolean gegnerHatSchwarz = false;
+						for (int k=0;k<partien.size();k++)
+						{
+							Partie test = partien.get(k);
+							Spieler weiss = test.getWeiss();
+							Spieler schwarz = test.getSchwarz();
+							if (weiss.istGleich(gegner))
+							{
+								gegnerHatWeiss = true;
+								partie = test;
+							}
+							if (schwarz.istGleich(gegner))
+							{
+								gegnerHatSchwarz = true;
+								partie = test;
+							}
+						}
+						if (gegnerHatWeiss)
+						{
+							int ergebnis = partie.getErgebnis();
+							String serg = ErgebnisDarsteller.getUmgedreht(ergebnis);
+							wrt.write(serg);
+						}
+						if (gegnerHatSchwarz)
+						{
+							int ergebnis = partie.getErgebnis();
+							String serg = ErgebnisDarsteller.get(ergebnis);
+							wrt.write(serg);
+						}
+					}
+					wrt.write("</td>");
+				}
+				wrt.write("</tr>");
+			}
+			wrt.write("</table>");
+			wrt.write("</p>");
+			wrt.write("<p style=\"page-break-after: always;\">");
+			for (int i=0;i<spielerList.size();i++)
+			{
+				Spieler spieler = spielerList.get(i);
+				wrt.write((i+1) + " " + spieler.getVorname() + " " + spieler.getName() + "<br/>");
+			}
+			wrt.write("</p>");
+			finish();
+		}
+		catch (Exception e)
+		{
+			Protokol.write("SimplePrintToHtml:printMatrix:Exception");
+			Protokol.write(e.toString());
+		}
 	}
 }

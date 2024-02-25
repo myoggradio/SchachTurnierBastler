@@ -179,4 +179,25 @@ public class SimpleTurnier implements Turnier,Serializable
 		}
 		spieler.remove(einspieler);
 	}
+	@Override
+	public ArrayList<Partie> getPartien(Spieler spieler) 
+	{
+		ArrayList<Partie> erg = new ArrayList<Partie>();
+		for (int i=0;i<aktiveRunde;i++)
+		{
+			Runde runde = runden[i];
+			int n = runde.getMaxPartien();
+			for (int j=0;j<n;j++)
+			{
+				Partie partie = runde.getPartie(j);
+				Spieler weiss = partie.getWeiss();
+				Spieler schwarz = partie.getSchwarz();
+				boolean ok = false;
+				if (weiss.istGleich(spieler)) ok = true;
+				if (schwarz.istGleich(spieler)) ok = true;
+				if (ok) erg.add(partie);
+			}
+		}
+		return erg;
+	}
 }

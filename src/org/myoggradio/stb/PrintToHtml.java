@@ -10,4 +10,5 @@ public interface PrintToHtml
 	public void print(JGJRunde runde,int rundenummer);
 	public void print(ArrayList<Auswertung> auswertungen);
 	public void print(JGJTurnier turnier,int rundenummer);
+	public void printMatrix();
 }
