@@ -126,7 +126,7 @@ public class SimpleTurnier implements Turnier,Serializable
 			for (int i=0;i<runde.getMaxPartien();i++)
 			{
 				Partie partie = runde.getPartie(i);
-				int ergebnis = partie.getErgebnis();
+				int ergebnis = partie.getErgebnisN();
 				if (ergebnis != 0)
 				{
 					ok = false;

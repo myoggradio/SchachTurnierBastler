@@ -121,7 +121,7 @@ public class SimpleJGJTurnierMenu extends JFrame implements ActionListener, JGJT
 			Spieler schwarz = partie.getSchwarz();
 			String sweiss = weiss.getVorname() + " " + weiss.getName() + " " + weiss.getDWZ(); 
 			String sschwarz = schwarz.getVorname() + " " + schwarz.getName() + " " + schwarz.getDWZ(); 
-			int ergebnis = partie.getErgebnis();
+			int ergebnis = partie.getErgebnisN();
 			rowData[i][0] = (i+1) + "";
 			rowData[i][1] = sweiss;
 			rowData[i][2] = sschwarz;
@@ -280,7 +280,7 @@ public class SimpleJGJTurnierMenu extends JFrame implements ActionListener, JGJT
 			for (int j=0;j<runde.getMaxPartien();j++)
 			{
 				Partie partie = runde.getPartie(j);
-				int ergebnis = partie.getErgebnis();
+				int ergebnis = partie.getErgebnisN();
 				if (ergebnis !=  0) 
 				{
 					Spieler weiss = partie.getWeiss();

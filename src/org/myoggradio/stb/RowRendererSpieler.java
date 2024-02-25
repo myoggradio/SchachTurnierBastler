@@ -19,7 +19,7 @@ public class RowRendererSpieler extends DefaultTableCellRenderer
 		Partie partie = partien.get(row);
 		Spieler weiss = partie.getWeiss();
 		Spieler schwarz = partie.getSchwarz();
-		int ergebnis = partie.getErgebnis();
+		int ergebnis = partie.getErgebnisN();
 		if (weiss.getName().equals("FREILOS"))
 		{
 			this.setBackground(Color.GREEN);
@@ -27,15 +27,15 @@ public class RowRendererSpieler extends DefaultTableCellRenderer
 		else if (spieler == weiss)
 		{
 			if (ergebnis == 1) this.setBackground(Color.YELLOW);
-			else if (ergebnis == 2) this.setBackground(Color.GREEN);
-			else if (ergebnis == 3) this.setBackground(Color.RED);
+			else if (ergebnis == 2 | ergebnis == 4) this.setBackground(Color.GREEN);
+			else if (ergebnis == 3 | ergebnis == 5 | ergebnis == 6) this.setBackground(Color.RED);
 			else this.setBackground(Color.GRAY);
 		}
 		else if (spieler == schwarz)
 		{
 			if (ergebnis == 1) this.setBackground(Color.YELLOW);
-			else if (ergebnis == 2) this.setBackground(Color.RED);
-			else if (ergebnis == 3) this.setBackground(Color.GREEN);
+			else if (ergebnis == 2 | ergebnis == 4 | ergebnis == 6) this.setBackground(Color.RED);
+			else if (ergebnis == 3 | ergebnis == 5) this.setBackground(Color.GREEN);
 			else this.setBackground(Color.GRAY);
 		}
 		else

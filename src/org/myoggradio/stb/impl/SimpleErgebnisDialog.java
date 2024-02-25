@@ -18,6 +18,9 @@ public class SimpleErgebnisDialog extends JDialog implements ErgebnisDialog, Act
 	private JButton buttun = null;
 	private JButton buttsw = null;
 	private JButton buttss = null;
+	private JButton buttkw = null;
+	private JButton buttks = null;
+	private JButton buttkk = null;
 	private Partie partie = null;
 	public SimpleErgebnisDialog()
 	{
@@ -38,6 +41,9 @@ public class SimpleErgebnisDialog extends JDialog implements ErgebnisDialog, Act
 		buttun.addActionListener(this);
 		buttsw.addActionListener(this);
 		buttss.addActionListener(this);
+		buttkw.addActionListener(this);
+		buttks.addActionListener(this);
+		buttkk.addActionListener(this);
 		setContentPane(cpan);
 		pack();
 		setVisible(true);
@@ -52,22 +58,28 @@ public class SimpleErgebnisDialog extends JDialog implements ErgebnisDialog, Act
 	public void buildbpan()
 	{
 		bpan = new JPanel();
-		bpan.setLayout(new GridLayout(4,1));
+		bpan.setLayout(new GridLayout(7,1));
 		buttng = new JButton("0 : 0");
 		buttun = new JButton("1/2 : 1/2");
 		buttsw = new JButton("1 : 0");
 		buttss = new JButton("0 : 1");
+		buttkw = new JButton("+ : -");
+		buttks = new JButton("- : +");
+		buttkk = new JButton("- : -");
 		bpan.add(buttng);
 		bpan.add(buttun);
 		bpan.add(buttsw);
 		bpan.add(buttss);
+		bpan.add(buttkw);
+		bpan.add(buttks);
+		bpan.add(buttkk);
 	}
 	public void buildepan()
 	{
 		epan = new JPanel();
 		Spieler weiss = partie.getWeiss();
 		Spieler schwarz = partie.getSchwarz();
-		int ergebnis = partie.getErgebnis();
+		int ergebnis = partie.getErgebnisN();
 		String sweiss = weiss.getVorname() + " " + weiss.getName() + " " + weiss.getDWZ();
 		String sschwarz = schwarz.getVorname() + " " + schwarz.getName() + " " + schwarz.getDWZ();
 		JLabel labw = new JLabel(sweiss);
@@ -101,6 +113,18 @@ public class SimpleErgebnisDialog extends JDialog implements ErgebnisDialog, Act
 		if (source == buttss)
 		{
 			partie.setErgebnis(3);
+		}
+		if (source == buttkw)
+		{
+			partie.setErgebnis(4);
+		}
+		if (source == buttks)
+		{
+			partie.setErgebnis(5);
+		}
+		if (source == buttkk)
+		{
+			partie.setErgebnis(6);
 		}
 		anzeigen();
 	}

@@ -96,7 +96,7 @@ public class SimplePrintToHtml implements PrintToHtml
 				Partie partie = runde.getPartie(i);
 				Spieler weiss = partie.getWeiss();
 				Spieler schwarz = partie.getSchwarz();
-				int ergebnis = partie.getErgebnis();
+				int ergebnis = partie.getErgebnisN();
 				String serg = ErgebnisDarsteller.get(ergebnis);
 				wrt.write("<tr>" + "\n");
 				wrt.write("<td>" + "\n");
@@ -147,7 +147,7 @@ public class SimplePrintToHtml implements PrintToHtml
 				Partie partie = runde.getPartie(i);
 				Spieler weiss = partie.getWeiss();
 				Spieler schwarz = partie.getSchwarz();
-				int ergebnis = partie.getErgebnis();
+				int ergebnis = partie.getErgebnisN();
 				String serg = ErgebnisDarsteller.get(ergebnis);
 				wrt.write("<tr>" + "\n");
 				wrt.write("<td>" + "\n");
@@ -201,7 +201,7 @@ public class SimplePrintToHtml implements PrintToHtml
 				Partie partie = runde.getPartie(i);
 				Spieler weiss = partie.getWeiss();
 				Spieler schwarz = partie.getSchwarz();
-				int ergebnis = partie.getErgebnis();
+				int ergebnis = partie.getErgebnisN();
 				String serg = ErgebnisDarsteller.get(ergebnis);
 				wrt.write("<tr>" + "\n");
 				wrt.write("<td>" + "\n");
@@ -417,13 +417,13 @@ public class SimplePrintToHtml implements PrintToHtml
 						}
 						if (gegnerHatWeiss)
 						{
-							int ergebnis = partie.getErgebnis();
+							int ergebnis = partie.getErgebnisN();
 							String serg = ErgebnisDarsteller.getUmgedreht(ergebnis);
 							wrt.write(serg);
 						}
 						if (gegnerHatSchwarz)
 						{
-							int ergebnis = partie.getErgebnis();
+							int ergebnis = partie.getErgebnisN();
 							String serg = ErgebnisDarsteller.get(ergebnis);
 							wrt.write(serg);
 						}

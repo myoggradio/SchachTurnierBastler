@@ -33,7 +33,7 @@ public class SimplePartie implements Partie,Serializable
 		return schwarz;
 	}
 	@Override
-	public int getErgebnis() 
+	public int getErgebnisN() 
 	{
 		return ergebnis;
 	}

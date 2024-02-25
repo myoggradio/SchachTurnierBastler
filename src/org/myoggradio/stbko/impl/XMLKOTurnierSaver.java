@@ -48,7 +48,7 @@ public class XMLKOTurnierSaver
 					{
 						Partie partie = runde.getPartie(j);
 						out.writeStartElement("partie");
-						out.writeAttribute("ergebnis","" + partie.getErgebnis());
+						out.writeAttribute("ergebnis","" + partie.getErgebnisN());
 						Spieler weiss = partie.getWeiss();
 						out.writeStartElement("weiss");
 						out.writeAttribute("vorname",weiss.getVorname());

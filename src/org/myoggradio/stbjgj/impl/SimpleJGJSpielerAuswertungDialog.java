@@ -97,7 +97,7 @@ public class SimpleJGJSpielerAuswertungDialog extends JDialog implements JGJSpie
 			Partie partie = partien.get(i);
 			Spieler weiss = partie.getWeiss();
 			Spieler schwarz = partie.getSchwarz();
-			int ergebnis = partie.getErgebnis();
+			int ergebnis = partie.getErgebnisN();
 			if (weiss.getName().equals("FREILOS"))
 			{
 				rows[i][0] = "FREILOS";

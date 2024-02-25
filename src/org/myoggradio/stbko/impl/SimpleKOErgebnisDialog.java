@@ -20,6 +20,8 @@ public class SimpleKOErgebnisDialog extends JDialog implements KOErgebnisDialog,
 	private JButton buttng = null;
 	private JButton buttsw = null;
 	private JButton buttss = null;
+	private JButton buttkw = null;
+	private JButton buttks = null;
 	private Partie partie = null;
 	private JButton buttcw = null;
 	private JButton buttcs = null;
@@ -43,6 +45,8 @@ public class SimpleKOErgebnisDialog extends JDialog implements KOErgebnisDialog,
 		buttng.addActionListener(this);
 		buttsw.addActionListener(this);
 		buttss.addActionListener(this);
+		buttkw.addActionListener(this);
+		buttks.addActionListener(this);
 		buttcw.addActionListener(this);
 		buttcs.addActionListener(this);
 		buttausw.addActionListener(this);
@@ -72,20 +76,24 @@ public class SimpleKOErgebnisDialog extends JDialog implements KOErgebnisDialog,
 	public void buildbpan()
 	{
 		bpan = new JPanel();
-		bpan.setLayout(new GridLayout(3,1));
+		bpan.setLayout(new GridLayout(5,1));
 		buttng = new JButton("0 : 0");
 		buttsw = new JButton("1 : 0");
 		buttss = new JButton("0 : 1");
+		buttkw = new JButton("+ : -");
+		buttks = new JButton("- : +");
 		bpan.add(buttng);
 		bpan.add(buttsw);
 		bpan.add(buttss);
+		bpan.add(buttkw);
+		bpan.add(buttks);
 	}
 	public void buildepan()
 	{
 		epan = new JPanel();
 		Spieler weiss = partie.getWeiss();
 		Spieler schwarz = partie.getSchwarz();
-		int ergebnis = partie.getErgebnis();
+		int ergebnis = partie.getErgebnisN();
 		String sweiss = weiss.getVorname() + " " + weiss.getName() + " " + weiss.getDWZ();
 		String sschwarz = schwarz.getVorname() + " " + schwarz.getName() + " " + schwarz.getDWZ();
 		JLabel labw = new JLabel(sweiss);
@@ -112,9 +120,17 @@ public class SimpleKOErgebnisDialog extends JDialog implements KOErgebnisDialog,
 		{
 			partie.setErgebnis(2);
 		}
+		if (source == buttkw)
+		{
+			partie.setErgebnis(4);
+		}
 		if (source == buttss)
 		{
 			partie.setErgebnis(3);
+		}
+		if (source == buttks)
+		{
+			partie.setErgebnis(5);
 		}
 		if (source == buttcw)
 		{

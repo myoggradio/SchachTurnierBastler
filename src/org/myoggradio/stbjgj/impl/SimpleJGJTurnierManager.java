@@ -149,14 +149,14 @@ public class SimpleJGJTurnierManager implements JGJTurnierManager
 					Partie partie = runde.getPartie(a);
 					Spieler weiss = partie.getWeiss();
 					Spieler schwarz = partie.getSchwarz();
-					int ergebnis = partie.getErgebnis();
+					int ergebnis = partie.getErgebnisN();
 					if (spieler.istGleich(weiss))
 					{
 						if (!schwarz.istGleich(freilos)) 
 						{
 							anzahlWeiss++;
 							if (ergebnis == 1) punkte += 0.5;
-							if (ergebnis == 2) punkte += 1.0;
+							if (ergebnis == 2 | ergebnis == 4) punkte += 1.0;
 						}
 					}
 					if (spieler.istGleich(schwarz))
@@ -165,7 +165,7 @@ public class SimpleJGJTurnierManager implements JGJTurnierManager
 						{
 							anzahlSchwarz++;
 							if (ergebnis == 1) punkte += 0.5;
-							if (ergebnis == 3) punkte += 1.0;
+							if (ergebnis == 3 | ergebnis == 5) punkte += 1.0;
 						}	
 					}
 				}
@@ -246,8 +246,8 @@ public class SimpleJGJTurnierManager implements JGJTurnierManager
 							Spieler testspieler = test.getSpieler();
 							if (testspieler.istGleich(schwarz))
 							{
-								int partieergebnis = partie.getErgebnis();
-								if (partieergebnis == 2) //Weiss hat gewonnen
+								int partieergebnis = partie.getErgebnisN();
+								if (partieergebnis == 2 | partieergebnis == 4) //Weiss hat gewonnen
 								{
 									sonneberger += test.getPunkte();
 								}
@@ -266,8 +266,8 @@ public class SimpleJGJTurnierManager implements JGJTurnierManager
 							Spieler testspieler = test.getSpieler();
 							if (testspieler.istGleich(weiss))
 							{
-								int partieergebnis = partie.getErgebnis();
-								if (partieergebnis == 3) //Schwarz hat gewonnen
+								int partieergebnis = partie.getErgebnisN();
+								if (partieergebnis == 3 | partieergebnis == 5) //Schwarz hat gewonnen
 								{
 									sonneberger += test.getPunkte();
 								}

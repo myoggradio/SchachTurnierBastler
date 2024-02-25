@@ -44,7 +44,7 @@ public class SimpleRunde implements Runde,Serializable
 		for (int i=0;i<partien.length;i++)
 		{
 			Partie partie = partien[i];
-			int ergebnis = partie.getErgebnis();
+			int ergebnis = partie.getErgebnisN();
 			if (ergebnis == 0) erg = false;
 		}
 		return erg;

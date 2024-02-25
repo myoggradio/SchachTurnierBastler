@@ -99,7 +99,7 @@ public class SimpleKOTurnierMenu2 extends JFrame implements ActionListener, KOTu
 			Spieler schwarz = partie.getSchwarz();
 			String sweiss = weiss.getVorname() + " " + weiss.getName() + " " + weiss.getDWZ(); 
 			String sschwarz = schwarz.getVorname() + " " + schwarz.getName() + " " + schwarz.getDWZ(); 
-			int ergebnis = partie.getErgebnis();
+			int ergebnis = partie.getErgebnisN();
 			rowData[i][0] = (i+1) + "";
 			rowData[i][1] = sweiss;
 			rowData[i][2] = sschwarz;

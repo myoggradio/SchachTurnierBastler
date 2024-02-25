@@ -73,7 +73,7 @@ public class SimpleJGJSpielerManager implements JGJSpielerManager
 		{
 			Partie partie0save = runde0save.getPartie(i);
 			Partie partie0 = runde0.getPartie(i);
-			partie0.setErgebnis(partie0save.getErgebnis());
+			partie0.setErgebnis(partie0save.getErgebnisN());
 		}
 	}
 }

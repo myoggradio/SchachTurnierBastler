@@ -134,7 +134,7 @@ public class SimpleTurnierMenu extends JFrame implements ActionListener, Turnier
 			Spieler schwarz = partie.getSchwarz();
 			String sweiss = weiss.getVorname() + " " + weiss.getName() + " " + weiss.getDWZ() + " (" + getPunkte(weiss,dargestellteRunde) + ")"; 
 			String sschwarz = schwarz.getVorname() + " " + schwarz.getName() + " " + schwarz.getDWZ() + " (" + getPunkte(schwarz,dargestellteRunde) + ")"; 
-			int ergebnis = partie.getErgebnis();
+			int ergebnis = partie.getErgebnisN();
 			rowData[i][0] = (i+1) + "";
 			rowData[i][1] = sweiss;
 			rowData[i][2] = sschwarz;

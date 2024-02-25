@@ -125,9 +125,9 @@ public class SimpleKOTurnierManager implements KOTurnierManager
 	private Spieler getSieger(Partie partie)
 	{
 		Spieler erg = null;
-		int ergebnis = partie.getErgebnis();
-		if (ergebnis == 2) erg = partie.getWeiss();
-		if (ergebnis == 3) erg = partie.getSchwarz();
+		int ergebnis = partie.getErgebnisN();
+		if (ergebnis == 2 | ergebnis == 4) erg = partie.getWeiss();
+		if (ergebnis == 3 | ergebnis == 5) erg = partie.getSchwarz();
 		return erg;
 	}
 	@Override

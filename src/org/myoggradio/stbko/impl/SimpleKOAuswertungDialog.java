@@ -80,7 +80,7 @@ public class SimpleKOAuswertungDialog extends JDialog implements KOAuswertungDia
 			Spieler schwarz = partie.getSchwarz();
 			String sweiss = weiss.getVorname() + " " + weiss.getName() + " " + weiss.getDWZ();
 			String sschwarz = schwarz.getVorname() + " " + schwarz.getName() + " " + schwarz.getDWZ();
-			int ergebnis = partie.getErgebnis();
+			int ergebnis = partie.getErgebnisN();
 			rowData[i][0] = sweiss;
 			rowData[i][1] = sschwarz;
 			rowData[i][2] = ErgebnisDarsteller.get(ergebnis);
@@ -107,7 +107,7 @@ public class SimpleKOAuswertungDialog extends JDialog implements KOAuswertungDia
 			Spieler schwarz = partie.getSchwarz();
 			String sweiss = weiss.getVorname() + " " + weiss.getName() + " " + weiss.getDWZ();
 			String sschwarz = schwarz.getVorname() + " " + schwarz.getName() + " " + schwarz.getDWZ();
-			int ergebnis = partie.getErgebnis();
+			int ergebnis = partie.getErgebnisN();
 			rowData[i][0] = sweiss;
 			rowData[i][1] = sschwarz;
 			rowData[i][2] = ErgebnisDarsteller.get(ergebnis);

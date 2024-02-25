@@ -15,7 +15,7 @@ public class RowRendererPartie extends DefaultTableCellRenderer
 	public Component getTableCellRendererComponent(JTable table,Object value,boolean isSelected,boolean hasFocus,int row,int column)
 	{
 		Partie partie = partien.get(row);
-		int ergebnis = partie.getErgebnis();
+		int ergebnis = partie.getErgebnisN();
 		if (ergebnis == 0)
 		{
 			this.setBackground(Color.RED);

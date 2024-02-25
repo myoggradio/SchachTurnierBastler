@@ -32,9 +32,10 @@ public class SimpleKORunde implements KORunde,Serializable
 		boolean erg = true;
 		for (int i=0;i<partien.length;i++)
 		{
-			int ergebnis = partien[i].getErgebnis();
+			int ergebnis = partien[i].getErgebnisN();
 			if (ergebnis == 0) erg = false;
 			if (ergebnis == 1) erg = false;
+			if (ergebnis == 6) erg = false;
 		}
 		return erg;
 	}

@@ -64,7 +64,7 @@ public class XMLTurnierSaver
 					{
 						Partie partie = runde.getPartie(j);
 						out.writeStartElement("partie");
-						out.writeAttribute("ergebnis","" + partie.getErgebnis());
+						out.writeAttribute("ergebnis","" + partie.getErgebnisN());
 						Spieler weiss = partie.getWeiss();
 						out.writeStartElement("weiss");
 						out.writeAttribute("id",weiss.getId() + "");

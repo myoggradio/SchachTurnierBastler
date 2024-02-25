@@ -27,6 +27,9 @@ public class SimpleJGJErgebnisDialog extends JDialog implements JGJErgebnisDialo
 	private JButton buttsw = null;
 	private JButton buttss = null;
 	private JButton buttr = null; 
+	private JButton buttkw = null;
+	private JButton buttks = null;
+	private JButton buttkk = null;
 	private Partie partie = null;
 	private JButton buttcw = null;
 	private JButton buttcs = null;
@@ -51,6 +54,9 @@ public class SimpleJGJErgebnisDialog extends JDialog implements JGJErgebnisDialo
 		buttsw.addActionListener(this);
 		buttss.addActionListener(this);
 		buttr.addActionListener(this);
+		buttkw.addActionListener(this);
+		buttks.addActionListener(this);
+		buttkk.addActionListener(this);
 		buttcw.addActionListener(this);
 		buttcs.addActionListener(this);
 		buttausw.addActionListener(this);
@@ -80,22 +86,28 @@ public class SimpleJGJErgebnisDialog extends JDialog implements JGJErgebnisDialo
 	public void buildbpan()
 	{
 		bpan = new JPanel();
-		bpan.setLayout(new GridLayout(4,1));
+		bpan.setLayout(new GridLayout(7,1));
 		buttng = new JButton("0 : 0");
 		buttsw = new JButton("1 : 0");
 		buttss = new JButton("0 : 1");
 		buttr = new JButton("1/2 : 1/2");
+		buttkw = new JButton("+ : -");
+		buttks = new JButton("- : +");
+		buttkk = new JButton("- : -");
 		bpan.add(buttng);
 		bpan.add(buttsw);
 		bpan.add(buttss);
 		bpan.add(buttr);
+		bpan.add(buttkw);
+		bpan.add(buttks);
+		bpan.add(buttkk);
 	}
 	public void buildepan()
 	{
 		epan = new JPanel();
 		Spieler weiss = partie.getWeiss();
 		Spieler schwarz = partie.getSchwarz();
-		int ergebnis = partie.getErgebnis();
+		int ergebnis = partie.getErgebnisN();
 		String sweiss = weiss.getVorname() + " " + weiss.getName() + " " + weiss.getDWZ();
 		String sschwarz = schwarz.getVorname() + " " + schwarz.getName() + " " + schwarz.getDWZ();
 		JLabel labw = new JLabel(sweiss);
@@ -129,6 +141,18 @@ public class SimpleJGJErgebnisDialog extends JDialog implements JGJErgebnisDialo
 		if (source == buttss)
 		{
 			partie.setErgebnis(3);
+		}
+		if (source == buttkw)
+		{
+			partie.setErgebnis(4);
+		}
+		if (source == buttks)
+		{
+			partie.setErgebnis(5);
+		}
+		if (source == buttkk)
+		{
+			partie.setErgebnis(6);
 		}
 		if (source == buttcw)
 		{

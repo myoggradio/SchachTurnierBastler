@@ -8,6 +8,9 @@ public class ErgebnisDarsteller
 		if (ergebnis == 1) erg = "1/2 : 1/2";
 		if (ergebnis == 2) erg = "  1  :  0 ";
 		if (ergebnis == 3) erg = "  0  :  1 ";
+		if (ergebnis == 4) erg = "  +  :  - ";
+		if (ergebnis == 5) erg = "  -  :  + ";
+		if (ergebnis == 6) erg = "  -  :  - ";
 		return erg;
 	}
 	public static String getUmgedreht(int ergebnis)
@@ -17,6 +20,9 @@ public class ErgebnisDarsteller
 		if (ergebnis == 1) erg = "1/2 : 1/2";
 		if (ergebnis == 2) erg = "  0  :  1 ";
 		if (ergebnis == 3) erg = "  1  :  0 ";
+		if (ergebnis == 4) erg = "  -  :  + ";
+		if (ergebnis == 5) erg = "  +  :  - ";
+		if (ergebnis == 6) erg = "  -  :  - ";
 		return erg;
 	}
 }

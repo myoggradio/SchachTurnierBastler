@@ -36,7 +36,7 @@ public class SimpleJGJRunde implements JGJRunde,Serializable
 		boolean erg = true;
 		for (int i=0;i<partien.length;i++)
 		{
-			int ergebnis = partien[i].getErgebnis();
+			int ergebnis = partien[i].getErgebnisN();
 			if (ergebnis == 0) erg = false;
 		}
 		return erg;
@@ -62,12 +62,12 @@ public class SimpleJGJRunde implements JGJRunde,Serializable
 			Spieler t2 = partie.getSchwarz();
 			if (t1.getId() == spieler1.getId() && t2.getId() == spieler2.getId())
 			{
-				int x = partie.getErgebnis();
+				int x = partie.getErgebnisN();
 				erg = ErgebnisDarsteller.get(x);
 			}
 			if (t2.getId() == spieler1.getId() && t1.getId() == spieler2.getId())
 			{
-				int x = partie.getErgebnis();
+				int x = partie.getErgebnisN();
 				erg = ErgebnisDarsteller.getUmgedreht(x);
 			}
 		}
