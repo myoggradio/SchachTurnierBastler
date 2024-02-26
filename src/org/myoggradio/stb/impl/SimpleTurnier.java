@@ -81,6 +81,17 @@ public class SimpleTurnier implements Turnier,Serializable
 			Partie partie = Factory.getPartie();
 			Spieler spieler1 = spieler.get(i);
 			Spieler spieler2 = spieler.get(i + nh);
+			if (i == ((i/2)*2)) // i ist gerade
+			{
+				partie.setSchwarz(spieler1);
+				partie.setWeiss(spieler2);
+			}
+			else
+			{
+				partie.setWeiss(spieler1);
+				partie.setSchwarz(spieler2);
+			}
+			/*
 			double test = Math.random();
 			if (test > 0.5)
 			{
@@ -92,6 +103,7 @@ public class SimpleTurnier implements Turnier,Serializable
 				partie.setWeiss(spieler2);
 				partie.setSchwarz(spieler1);
 			}
+			*/
 			runde0.setPartie(partie,i);
 		}
 		setNextRunde(runde0);
