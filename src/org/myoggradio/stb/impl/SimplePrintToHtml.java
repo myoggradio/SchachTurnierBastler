@@ -374,7 +374,7 @@ public class SimplePrintToHtml implements PrintToHtml
 		{
 			Turnier turnier = Parameter.turnier;
 			ArrayList<Spieler> spielerList = turnier.getSpieler();
-			wrt.write("<p style=\"page-break-after: always;\">");
+			//wrt.write("<p style=\"page-break-after: always;\">");
 			wrt.write("<table>");
 			wrt.write("<tr>");
 			wrt.write("<td></td>");
@@ -433,14 +433,48 @@ public class SimplePrintToHtml implements PrintToHtml
 				wrt.write("</tr>");
 			}
 			wrt.write("</table>");
-			wrt.write("</p>");
-			wrt.write("<p style=\"page-break-after: always;\">");
-			for (int i=0;i<spielerList.size();i++)
+			//wrt.write("</p>");
+			//
+			wrt.write("<table>");
+			//wrt.write("<p style=\"page-break-after: always;\">");
+			int n = spielerList.size() / 3;
+			for (int i=0;i<n+1;i++)
 			{
-				Spieler spieler = spielerList.get(i);
-				wrt.write((i+1) + " " + spieler.getVorname() + " " + spieler.getName() + "<br/>");
+				wrt.write("<tr>");
+				int j = 3*i;
+				if (j < spielerList.size())
+				{
+					Spieler spieler = spielerList.get(j);
+					wrt.write("<td>" + (j+1) + " " + spieler.getVorname() + " " + spieler.getName() + "</td>");
+				}
+				else
+				{
+					wrt.write("<td></td>");
+				}
+				j = 3*i+1;
+				if (j < spielerList.size())
+				{
+					Spieler spieler = spielerList.get(j);
+					wrt.write("<td>" + (j+1) + " " + spieler.getVorname() + " " + spieler.getName() + "</td>");
+				}
+				else
+				{
+					wrt.write("<td></td>");
+				}
+				j = 3*i+2;
+				if (j < spielerList.size())
+				{
+					Spieler spieler = spielerList.get(j);
+					wrt.write("<td>" + (j+1) + " " + spieler.getVorname() + " " + spieler.getName() + "</td>");
+				}
+				else
+				{
+					wrt.write("<td></td>");
+				}
+				wrt.write("</tr>");
 			}
-			wrt.write("</p>");
+			//wrt.write("</p>");
+			wrt.write("</table>");
 			finish();
 		}
 		catch (Exception e)
