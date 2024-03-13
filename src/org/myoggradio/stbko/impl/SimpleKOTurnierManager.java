@@ -91,9 +91,11 @@ public class SimpleKOTurnierManager implements KOTurnierManager
 	private int getAnzahlWeiss(Spieler spieler)
 	{
 		int erg = 0;
-		for (int i=0;i<KOParameter.turnier.getNummerAktiveRunde();i++)
+		for (int i=0;i<=KOParameter.turnier.getNummerAktiveRunde();i++)
 		{
 			KORunde runde = KOParameter.turnier.getRunde(i);
+			if (runde != null)
+			{
 			for (int a=0;a<runde.getMaxPartien();a++)
 			{
 				Partie partie = runde.getPartie(a);
@@ -102,15 +104,18 @@ public class SimpleKOTurnierManager implements KOTurnierManager
 					if (!istFreilos(partie.getSchwarz())) erg++;
 				}
 			}
+			}
 		}
 		return erg;
 	}
 	private int getAnzahlSchwarz(Spieler spieler)
 	{
 		int erg = 0;
-		for (int i=0;i<KOParameter.turnier.getNummerAktiveRunde();i++)
+		for (int i=0;i<=KOParameter.turnier.getNummerAktiveRunde();i++)
 		{
 			KORunde runde = KOParameter.turnier.getRunde(i);
+			if (runde != null)
+			{
 			for (int a=0;a<runde.getMaxPartien();a++)
 			{
 				Partie partie = runde.getPartie(a);
@@ -118,6 +123,7 @@ public class SimpleKOTurnierManager implements KOTurnierManager
 				{
 					if (!istFreilos(partie.getWeiss())) erg++;
 				}
+			}
 			}
 		}
 		return erg;
