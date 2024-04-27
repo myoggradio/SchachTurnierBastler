@@ -25,22 +25,22 @@ public class PartieComparator implements Comparator<Partie>
 		{
 			Auswertung auswertung = gruppe.get(i);
 			Spieler spieler = auswertung.getSpieler();
-			if (spieler == spieler1w) pos1w = i;
-			if (spieler == spieler1s) pos1s = i;
-			if (spieler == spieler2w) pos2w = i;
-			if (spieler == spieler2s) pos2s = i;
+			if (spieler.getId() == spieler1w.getId()) pos1w = i;
+			if (spieler.getId() == spieler1s.getId()) pos1s = i;
+			if (spieler.getId() == spieler2w.getId()) pos2w = i;
+			if (spieler.getId() == spieler2s.getId()) pos2s = i;
 		}
 		int pos1 = pos1s + pos1w;
 		int pos2 = pos2s + pos2w;
-		if (pos1s < pos1w) pos1s = pos1w;
-		if (pos2s < pos2w) pos2s = pos2w;
+		if (pos1s > pos1w) pos1s = pos1w;
+		if (pos2s > pos2w) pos2s = pos2w;
 		//
-		if (pos1s > pos2s) erg = 1;
-		else if (pos2s > pos1s) erg = -1;
+		if (pos1 > pos2) erg = 1;
+		else if (pos2 > pos1) erg = -1;
 		else
 		{
-			if (pos1 > pos2) erg = 1;
-			else if (pos2 > pos1) erg = -1;
+			if (pos1s > pos2s) erg = 1;
+			else if (pos2s > pos1s) erg = -1;
 			else erg = 0;
 		}
 		//Protokol.write(spieler1w.getName() + "-" + spieler1s.getName() + " " + pos1);
