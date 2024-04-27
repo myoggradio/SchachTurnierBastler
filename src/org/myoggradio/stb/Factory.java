@@ -89,7 +89,8 @@ public class Factory
 	public static TurnierManager getTurnierManager()
 	{
 		//return new MoreAdvancedTurnierManager();
-		return new ExtraMoreAdvancedTurnierManager();
+		//return new ExtraMoreAdvancedTurnierManager();
+		return new GruppenTurnierManager();
 	}
 	public static AuswertungDialog getAuswertungDialog()
 	{

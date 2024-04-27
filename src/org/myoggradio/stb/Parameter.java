@@ -2,13 +2,13 @@ package org.myoggradio.stb;
 import java.util.ArrayList;
 public class Parameter 
 {
-	public static String version = "1.67 - 13.03.2024";
+	public static String version = "1.70 - 27.04.2024";
 	public static int anzahlRunden = 7;
 	public static ArrayList<Spieler> spieler = new ArrayList<Spieler>();
 	public static Turnier turnier = Factory.getTurnier();
 	public static ArrayList<Auswertung> auswertungen = new ArrayList<Auswertung>();
-	public static int maxiter = 500000;
-	public static int itermsg = 50000;
+	public static int maxiter = 50000000;
+	public static int itermsg = 5000000;
 	public static int malusGleichePartie = 1000000;
 	public static int malusMehrAlsEinmalFreilos = 950000;
 	public static int malusFarbdifferenz3 = 900000;

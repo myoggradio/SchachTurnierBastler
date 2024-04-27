@@ -4,6 +4,7 @@ import java.util.Collections;
 import org.myoggradio.stb.*;
 public class SimpleRundenSortierer implements RundenSortierer
 {
+	private ArrayList<Auswertung> gruppe = null;
 	@Override
 	public void sortierePartien(Runde runde) 
 	{
@@ -16,11 +17,17 @@ public class SimpleRundenSortierer implements RundenSortierer
 		int nummerAktiveRunde = Parameter.turnier.getNummerAktiveRunde();
 		if (nummerAktiveRunde >= 0)
 		{
-			Collections.sort(partien,new PartieComparator());
+			PartieComparator comparator = new PartieComparator(gruppe);
+			Collections.sort(partien,comparator);
 		}
 		for (int i=0;i<partien.size();i++)
 		{
 			runde.setPartie(partien.get(i),i);
 		}
+	}
+	@Override
+	public void setGruppe(ArrayList<Auswertung> gruppe) 
+	{
+		this.gruppe = gruppe;		
 	}
 }

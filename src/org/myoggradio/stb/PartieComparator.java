@@ -1,7 +1,13 @@
 package org.myoggradio.stb;
+import java.util.ArrayList;
 import java.util.Comparator;
 public class PartieComparator implements Comparator<Partie>
 {
+	private ArrayList<Auswertung> gruppe = null;
+	public PartieComparator(ArrayList<Auswertung> gruppe)
+	{
+		this.gruppe = gruppe;
+	}
 	@Override
 	public int compare(Partie o1, Partie o2) 
 	{
@@ -14,10 +20,10 @@ public class PartieComparator implements Comparator<Partie>
 		int pos1s = 0;
 		int pos2w = 0;
 		int pos2s = 0;
-		int n = Parameter.auswertungen.size();
+		int n = gruppe.size();
 		for (int i=0;i<n;i++)
 		{
-			Auswertung auswertung = Parameter.auswertungen.get(i);
+			Auswertung auswertung = gruppe.get(i);
 			Spieler spieler = auswertung.getSpieler();
 			if (spieler == spieler1w) pos1w = i;
 			if (spieler == spieler1s) pos1s = i;

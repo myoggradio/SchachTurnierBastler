@@ -36,8 +36,8 @@ public class SimpleTurnier implements Turnier,Serializable
 			TurnierManager manager = Factory.getTurnierManager();
 			Parameter.auswertungen = manager.getAuswertung(aktiveRunde);
 			Collections.sort(Parameter.auswertungen,new AuswertungComparator());
-			RundenSortierer rs = Factory.getRundenSortierer();
-			rs.sortierePartien(runde);
+			//RundenSortierer rs = Factory.getRundenSortierer();
+			//rs.sortierePartien(runde);
 		}
 		aktiveRunde++;
 		TurnierAutoSaver tas = Factory.getTurnierAutoSaver();

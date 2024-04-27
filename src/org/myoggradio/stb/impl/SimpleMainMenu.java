@@ -358,7 +358,7 @@ public class SimpleMainMenu extends Menu implements ActionListener, MainMenu
 				try
 				{
 					int temp = Integer.parseInt(maxiter);
-					if (temp > 499000 && temp < 50000001)
+					if (temp > 499000 && temp < 500000001)
 					{
 						Parameter.maxiter = Integer.parseInt(maxiter);
 						prefs.put("SchachTurnierBastler_maxiter",maxiter);
@@ -386,7 +386,7 @@ public class SimpleMainMenu extends Menu implements ActionListener, MainMenu
 				try
 				{
 					int temp = Integer.parseInt(itermsg);
-					if (temp > 4999 && temp < 1000001)
+					if (temp > 49999 && temp < 50000001)
 					{
 						Parameter.itermsg = Integer.parseInt(itermsg);
 						prefs.put("SchachTurnierBastler_itermsg",itermsg);
