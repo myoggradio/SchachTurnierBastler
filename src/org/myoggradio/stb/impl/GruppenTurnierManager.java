@@ -209,6 +209,11 @@ public class GruppenTurnierManager implements TurnierManager
 	private Runde getBesteRunde(ArrayList<Auswertung> gruppe,Turnier turnier)
 	{
 		Runde erg = Factory.getRunde();
+		int maxiter = Parameter.maxiter;
+		if (gruppe.size() < 9) maxiter = maxiter / 10;
+		else if (gruppe.size() < 13) maxiter = maxiter / 5; // Kleine Gruppen brauchen weniger Iterationen
+		else if (gruppe.size() < 17) maxiter = maxiter / 2;
+		Protokol.write("GruppenTurnierManager:getBesteRunde:Maxiter: " + maxiter);
 		int nhalbe = gruppe.size() / 2; // Beachte gruppe.size() ist gerade
 		erg.setMaxPartien(nhalbe);
 		//
@@ -217,7 +222,7 @@ public class GruppenTurnierManager implements TurnierManager
 		int anzahlOK = 0;
 		int iter = 0;
 		int tempiter = 0;
-		for (int i=0;i<Parameter.maxiter;i++)
+		for (int i=0;i<maxiter;i++)
 		{
 			iter++;
 			tempiter++;
