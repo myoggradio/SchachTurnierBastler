@@ -308,8 +308,12 @@ public class SimpleMainMenu extends Menu implements ActionListener, MainMenu
 		}
 		if (source == m27) // Alle Spieler loeschen
 		{
-			Parameter.spieler = new ArrayList<Spieler>();
-			JOptionPane.showMessageDialog(null,"Alle Spieler wurden geloescht","Info",JOptionPane.INFORMATION_MESSAGE);
+			int ok = JOptionPane.showConfirmDialog(null, "Wirklich alle Spieler loeschen?");
+			if (ok == JOptionPane.YES_OPTION)
+			{
+				Parameter.spieler = new ArrayList<Spieler>();
+				JOptionPane.showMessageDialog(null,"Alle Spieler wurden geloescht","Info",JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
 		if (source == m31) // Version anzeigen
 		{
