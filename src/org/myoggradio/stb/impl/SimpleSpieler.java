@@ -80,8 +80,7 @@ public class SimpleSpieler implements Spieler,Serializable
 		if (id == test.getId()) erg = true;
 		return erg;
 	}
-/*
-	public boolean istGleich(Spieler test) 
+	public boolean istNamensGleich(Spieler test) 
 	{
 		boolean erg = true;
 		if (dwz != test.getDWZ()) erg = false;
@@ -89,5 +88,4 @@ public class SimpleSpieler implements Spieler,Serializable
 		if (!vorname.equals(test.getVorname())) erg = false;
 		return erg;
 	}
-*/
 }

@@ -35,11 +35,11 @@ public class SimpleKOAuswertungDialog extends JDialog implements KOAuswertungDia
 			for (int a=0;a<runde.getMaxPartien();a++)
 			{
 				Partie test = runde.getPartie(a);
-				if (weiss == test.getWeiss() || weiss == test.getSchwarz())
+				if (weiss.istNamensGleich(test.getWeiss()) || weiss.istNamensGleich(test.getSchwarz()))
 				{
 					if (!istFreilos(weiss)) partienWeiss.add(test);
 				}
-				if (schwarz == test.getWeiss() || schwarz == test.getSchwarz())
+				if (schwarz.istNamensGleich(test.getWeiss()) || schwarz.istNamensGleich(test.getSchwarz()))
 				{
 					if (!istFreilos(schwarz)) partienSchwarz.add(test);
 				}

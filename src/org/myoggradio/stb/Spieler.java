@@ -12,5 +12,5 @@ public interface Spieler
 	public String toString();
 	public void fromString(String satz);
 	public boolean istGleich(Spieler test);
-	
+	public boolean istNamensGleich(Spieler test);
 }
