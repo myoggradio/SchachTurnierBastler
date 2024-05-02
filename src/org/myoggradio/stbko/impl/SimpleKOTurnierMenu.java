@@ -162,7 +162,7 @@ public class SimpleKOTurnierMenu extends JDialog implements KOTurnierMenu,ListSe
 		Object quelle = ae.getSource();
 		if (quelle == butt1) // ok
 		{
-			fuelleSpielerMitFreilosAuf();
+			//fuelleSpielerMitFreilosAuf(); // Del 02.05.2024
 			int n = spieler.size();
 			for (int i=0;i<n;i++)
 			{
@@ -174,6 +174,20 @@ public class SimpleKOTurnierMenu extends JDialog implements KOTurnierMenu,ListSe
 				gesetzteSpieler.add(s);
 				spieler.remove(s);
 			}
+			// Start add 02.05.2024
+			fuelleSpielerMitFreilosAuf();
+			n = spieler.size();
+			for (int i=0;i<n;i++)
+			{
+				double dr = Math.random();
+				double di = (double) spieler.size();
+				double dj = di * dr;
+				int j = (int) dj;
+				Spieler s = spieler.get(j);
+				gesetzteSpieler.add(s);
+				spieler.remove(s);
+			}
+			// End add 02.05.2024
 			KOParameter.turnier.setSpieler(gesetzteSpieler);
 			KOTurnierManager manager = KOFactory.getKOTurnierManager();
 			KORunde runde = manager.starteErsteRunde(KOParameter.turnier);
