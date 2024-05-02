@@ -139,6 +139,25 @@ public class SimpleKOTurnierMenu extends JDialog implements KOTurnierMenu,ListSe
 			}
 		}
 	}
+	private void randomizeZweiteHaelfte()
+	{
+		int nhalbe = gesetzteSpieler.size() / 2;
+		for (int i=0;i<nhalbe;i++)
+		{
+			spieler.add(gesetzteSpieler.get(nhalbe));
+			gesetzteSpieler.remove(gesetzteSpieler.get(nhalbe));
+		}
+		for (int i=0;i<nhalbe;i++)
+		{
+			double dr = Math.random();
+			double di = (double) spieler.size();
+			double dj = di * dr;
+			int j = (int) dj;
+			Spieler s = spieler.get(j);
+			gesetzteSpieler.add(s);
+			spieler.remove(s);
+		}
+	}
 	private void fuelleSpielerMitFreilosAuf()
 	{
 		int n = gesetzteSpieler.size() + spieler.size();
@@ -187,6 +206,7 @@ public class SimpleKOTurnierMenu extends JDialog implements KOTurnierMenu,ListSe
 				gesetzteSpieler.add(s);
 				spieler.remove(s);
 			}
+			randomizeZweiteHaelfte();
 			// End add 02.05.2024
 			KOParameter.turnier.setSpieler(gesetzteSpieler);
 			KOTurnierManager manager = KOFactory.getKOTurnierManager();
