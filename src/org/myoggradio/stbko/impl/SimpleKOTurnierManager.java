@@ -99,7 +99,7 @@ public class SimpleKOTurnierManager implements KOTurnierManager
 			for (int a=0;a<runde.getMaxPartien();a++)
 			{
 				Partie partie = runde.getPartie(a);
-				if (spieler == partie.getWeiss())
+				if (spieler.istNamensGleich(partie.getWeiss()))
 				{
 					if (!istFreilos(partie.getSchwarz())) erg++;
 				}
@@ -119,7 +119,7 @@ public class SimpleKOTurnierManager implements KOTurnierManager
 			for (int a=0;a<runde.getMaxPartien();a++)
 			{
 				Partie partie = runde.getPartie(a);
-				if (spieler == partie.getSchwarz())
+				if (spieler.istNamensGleich(partie.getSchwarz()))
 				{
 					if (!istFreilos(partie.getWeiss())) erg++;
 				}
