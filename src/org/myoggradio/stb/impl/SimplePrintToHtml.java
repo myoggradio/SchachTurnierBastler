@@ -491,11 +491,26 @@ public class SimplePrintToHtml implements PrintToHtml
 		{
 			wrt.write("<table>");
 			int n = ko.getMaxrunden();
+			int k = 1;
+			for (int i=0;i<n;i++)
+			{
+				k = 2*k;
+			}
+			k = 3 * k;
+			k = k / 2;
+			String[][] felder = new String[n][k];
+			for (int i=0;i<n;i++)
+			{
+				for (int j=0;j<k;j++)
+				{
+					felder[i][j] = "<td></td>";
+				}
+			}
+			int zn = 0;
 			for (int i=0;i<n;i++)
 			{
 				KORunde runde = ko.getRunde(i);
 				int m = runde.getMaxPartien();
-				wrt.write("<tr>");
 				for (int j=0;j<m;j++)
 				{
 					Partie partie = runde.getPartie(j);
@@ -503,9 +518,21 @@ public class SimplePrintToHtml implements PrintToHtml
 					Spieler schwarz = partie.getSchwarz();
 					int ergebnis = partie.getErgebnisN();
 					String serg = ErgebnisDarsteller.get(ergebnis);
-					wrt.write("<td>" + weiss.getVorname() + " " + weiss.getName() + "</td>");
-					wrt.write("<td>" + serg + "</td>");
-					wrt.write("<td>" + schwarz.getVorname() + " " + schwarz.getName() + "</td>");
+					int zk = 3*j+0;
+					felder[zn][zk] = "<td>" + weiss.getVorname() + " " + weiss.getName() + "</td>";
+					zk = 3*j+1;
+					felder[zn][zk] = "<td>" + serg + "</td>";
+					zk = 3*j+2;
+					felder[zn][zk] = "<td>" + schwarz.getVorname() + " " + schwarz.getName() + "</td>";
+				}
+				zn++;
+			}
+			for (int i=0;i<k;i++)
+			{
+				wrt.write("<tr>");
+				for (int j=0;j<n;j++)
+				{
+					wrt.write(felder[j][i]);
 				}
 				wrt.write("</tr>");
 			}
