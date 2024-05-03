@@ -23,6 +23,7 @@ public class SimpleKOTurnierMenu2 extends JFrame implements ActionListener, KOTu
 	private JMenuItem m13 = new JMenuItem("speichern");
 	private JMenuItem m14 = new JMenuItem("laden autodetect");
 	private JMenuItem m15 = new JMenuItem("print");
+	private JMenuItem m16 = new JMenuItem("print Tree");
 	private JMenuItem m31 = new JMenuItem("Version");
 	private JMenuItem m32 = new JMenuItem("Autosave Directory");
 	private JPanel cpan = new JPanel();
@@ -45,6 +46,7 @@ public class SimpleKOTurnierMenu2 extends JFrame implements ActionListener, KOTu
 		m1.add(m13);
 		m1.add(m14);
 		m1.add(m15);
+		m1.add(m16);
 		m3.add(m31);
 		m3.add(m32);
 		menu.add(m1);
@@ -54,6 +56,7 @@ public class SimpleKOTurnierMenu2 extends JFrame implements ActionListener, KOTu
 		m13.addActionListener(this);
 		m14.addActionListener(this);
 		m15.addActionListener(this);
+		m16.addActionListener(this);
 		m31.addActionListener(this);
 		m32.addActionListener(this);
 		butt1.addActionListener(this);
@@ -184,6 +187,11 @@ public class SimpleKOTurnierMenu2 extends JFrame implements ActionListener, KOTu
 			KORunde runde = KOParameter.turnier.getAktiveRunde();
 			PrintToHtml print = Factory.getPrintToHtml();
 			print.print(runde);
+		}
+		if (source == m16) // print Tree
+		{
+			PrintToHtml print = Factory.getPrintToHtml();
+			print.printTree(KOParameter.turnier);
 		}
 		if (source == m31) // Version anzeigen
 		{

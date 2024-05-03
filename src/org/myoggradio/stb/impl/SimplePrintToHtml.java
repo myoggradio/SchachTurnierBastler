@@ -26,6 +26,7 @@ import org.myoggradio.stbjgj.JGJRunde;
 import org.myoggradio.stbjgj.JGJTurnier;
 import org.myoggradio.stbjgj.JGJTurnierManager;
 import org.myoggradio.stbko.KORunde;
+import org.myoggradio.stbko.KOTurnier;
 public class SimplePrintToHtml implements PrintToHtml
 {
 	private File file = new File(Parameter.autoSaveDirectory + File.separator + "SchachTurnierBastler.html");
@@ -480,6 +481,40 @@ public class SimplePrintToHtml implements PrintToHtml
 		catch (Exception e)
 		{
 			Protokol.write("SimplePrintToHtml:printMatrix:Exception");
+			Protokol.write(e.toString());
+		}
+	}
+	@Override
+	public void printTree(KOTurnier ko) 
+	{
+		try
+		{
+			wrt.write("<table>");
+			int n = ko.getMaxrunden();
+			for (int i=0;i<n;i++)
+			{
+				KORunde runde = ko.getRunde(i);
+				int m = runde.getMaxPartien();
+				wrt.write("<tr>");
+				for (int j=0;j<m;j++)
+				{
+					Partie partie = runde.getPartie(j);
+					Spieler weiss = partie.getWeiss();
+					Spieler schwarz = partie.getSchwarz();
+					int ergebnis = partie.getErgebnisN();
+					String serg = ErgebnisDarsteller.get(ergebnis);
+					wrt.write("<td>" + weiss.getVorname() + " " + weiss.getName() + "</td>");
+					wrt.write("<td>" + serg + "</td>");
+					wrt.write("<td>" + schwarz.getVorname() + " " + schwarz.getName() + "</td>");
+				}
+				wrt.write("</tr>");
+			}
+			wrt.write("</table>");
+			finish();
+		}
+		catch (Exception e)
+		{
+			Protokol.write("SimplePrintToHtml:printTree:Exception");
 			Protokol.write(e.toString());
 		}
 	}
