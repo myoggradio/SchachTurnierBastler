@@ -304,7 +304,7 @@ public class GruppenTurnierManager implements TurnierManager
 		Runde erg = Factory.getRunde();
 		if (turnier.getMaxrunden()-1 > turnier.getNummerAktiveRunde())
 		{
-			System.out.println("GruppenTurnierManager:starteNaechsteRunde: " + (turnier.getNummerAktiveRunde()+2));
+			Protokol.write("GruppenTurnierManager:starteNaechsteRunde: " + (turnier.getNummerAktiveRunde()+2));
 			Parameter.auswertungen = getAuswertung(turnier.getNummerAktiveRunde());
 			int n = Parameter.auswertungen.size();
 			int nhalbe = n / 2;
