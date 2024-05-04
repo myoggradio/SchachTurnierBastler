@@ -344,7 +344,15 @@ public class GruppenTurnierManager implements TurnierManager
 				}
 			}
 			//Die letzte Gruppe bekommt die uebriggebliebenen dazu
-			ArrayList<Auswertung> letzteGruppe = gruppen.get(gruppen.size()-1);
+			ArrayList<Auswertung> letzteGruppe = new ArrayList<Auswertung>();
+			if (gruppen.size() > 0)
+			{
+				letzteGruppe = gruppen.get(gruppen.size()-1);
+			}
+			else
+			{
+				gruppen.add(letzteGruppe);
+			}
 			for (int i=0;i<gruppe.size();i++)
 			{
 				Auswertung auswertung = gruppe.get(i);
