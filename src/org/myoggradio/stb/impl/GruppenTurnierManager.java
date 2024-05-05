@@ -278,8 +278,9 @@ public class GruppenTurnierManager implements TurnierManager
 	private boolean hatteSchonFreilos(Spieler spieler,Turnier turnier)
 	{
 		boolean erg = false;
-		int nummerAktiveRunde = turnier.getNummerAktiveRunde();
-		for (int i=0;i<nummerAktiveRunde;i++)
+		int maxrunden = turnier.getMaxrunden();
+		//int nummerAktiveRunde = turnier.getNummerAktiveRunde();
+		for (int i=0;i<maxrunden;i++)
 		{
 			Runde runde = turnier.getRunde(i);
 			if (runde != null)
