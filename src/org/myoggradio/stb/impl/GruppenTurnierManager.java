@@ -358,17 +358,12 @@ public class GruppenTurnierManager implements TurnierManager
 				Auswertung auswertung = gruppe.get(i);
 				letzteGruppe.add(auswertung);
 			}
-			// Gebe die Gruppen Groessen aus
-			for (int i=0;i<gruppen.size();i++)
-			{
-				ArrayList<Auswertung> aktuelleGruppe = gruppen.get(i);
-				Protokol.write("GruppenTurnierManager:starteNaechsteRunde:Gruppen Groesse: " + aktuelleGruppe.size());
-			}
 			// Führe die Runden aller Gruppen zu einer gesamt Runde zusammen 
 			int partieNummer = 0;
 			for (int i=0;i<gruppen.size();i++)
 			{
 				ArrayList<Auswertung> aktuelleGruppe = gruppen.get(i);
+				Protokol.write("GruppenTurnierManager:starteNaechsteRunde:Begin Gruppe " + (i+1) + " von " + gruppen.size() +  " Gruppengroesse: " + aktuelleGruppe.size());
 				Runde runde = getBesteRunde(aktuelleGruppe,turnier);
 				for (int j=0;j<runde.getMaxPartien();j++)
 				{
@@ -376,6 +371,7 @@ public class GruppenTurnierManager implements TurnierManager
 					erg.setPartie(partie,partieNummer);
 					partieNummer++;
 				}
+				Protokol.write("GruppenTurnierManager:starteNaechsteRunde:Ende  Gruppe " + (i+1) + " von " + gruppen.size());
 			}
 		}
 		else
