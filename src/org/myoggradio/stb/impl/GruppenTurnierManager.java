@@ -326,38 +326,43 @@ public class GruppenTurnierManager implements TurnierManager
 			}
 			// Jetzt ist die Anzahl Auswertungen und damit Spieler gerade
 			// Teile nun die Auswertungen in Gruppen auf
-			int gruppenGroesse = (turnier.getNummerAktiveRunde()+2) + 4;
-			gruppenGroesse = 2 * (gruppenGroesse / 2); // gruppenGroesse muss gerage sein
-			Protokol.write("GruppenTurnierManager:starteNaechsteRunde:Minimale Gruppen Groesse: " + gruppenGroesse);
-			ArrayList<Auswertung> gruppe = new ArrayList<Auswertung>();
+			int minimaleGruppenGroesse = (turnier.getNummerAktiveRunde()+2) + 4;
+			minimaleGruppenGroesse = 2 * (minimaleGruppenGroesse / 2); // gruppenGroesse muss gerage sein
+			Protokol.write("GruppenTurnierManager:starteNaechsteRunde:Minimale Gruppen Groesse: " + minimaleGruppenGroesse);
+			int anzahlGruppen = n / minimaleGruppenGroesse;
+			if (anzahlGruppen == 0) anzahlGruppen = 1; // es muss mindestens eine Gruppe geben
+			int[] gruppenGroessen = new int[anzahlGruppen];
+			for (int i=0;i<gruppenGroessen.length;i++) // Gruppen Größen initialisieren
+			{
+				gruppenGroessen[i] = 0;
+			}
+			// Gruppen Größen ermitteln
+			int j = 0;
+			for (int i=0;i<nhalbe;i++)
+			{
+				gruppenGroessen[j] = gruppenGroessen[j] + 2;
+				j++;
+				if (j == anzahlGruppen) j = 0;
+			}
+			// Gruppen ermitteln
 			ArrayList<ArrayList<Auswertung>> gruppen = new ArrayList<ArrayList<Auswertung>>();
-			int anzahl = gruppenGroesse;
-			for (int i=0;i<Parameter.auswertungen.size();i++)
+			int pos = 0;
+			for (int i=0;i<anzahlGruppen;i++)
 			{
-				Auswertung auswertung = Parameter.auswertungen.get(i);
-				gruppe.add(auswertung);
-				anzahl--;
-				if (anzahl == 0)
+				ArrayList<Auswertung> gruppe = new ArrayList<Auswertung>();
+				int gruppenGroesse = gruppenGroessen[i];
+				for (j=0;j<gruppenGroesse;j++)
 				{
-					gruppen.add(gruppe);
-					gruppe = new ArrayList<Auswertung>();
-					anzahl = gruppenGroesse;
+					Auswertung auswertung = Parameter.auswertungen.get(pos);
+					pos++;
+					gruppe.add(auswertung);
 				}
+				gruppen.add(gruppe);
 			}
-			//Die letzte Gruppe bekommt die uebriggebliebenen dazu
-			ArrayList<Auswertung> letzteGruppe = new ArrayList<Auswertung>();
-			if (gruppen.size() > 0)
+			for (int i=0;i<anzahlGruppen;i++)
 			{
-				letzteGruppe = gruppen.get(gruppen.size()-1);
-			}
-			else
-			{
-				gruppen.add(letzteGruppe);
-			}
-			for (int i=0;i<gruppe.size();i++)
-			{
-				Auswertung auswertung = gruppe.get(i);
-				letzteGruppe.add(auswertung);
+				int gruppenGroesse = gruppen.get(i).size();
+				Protokol.write("GruppenTurnierManager:starteNaechsteRunde:Gruppe " + (i+1) + " Groesse " + gruppenGroesse);
 			}
 			// Führe die Runden aller Gruppen zu einer gesamt Runde zusammen 
 			int partieNummer = 0;
@@ -366,7 +371,7 @@ public class GruppenTurnierManager implements TurnierManager
 				ArrayList<Auswertung> aktuelleGruppe = gruppen.get(i);
 				Protokol.write("GruppenTurnierManager:starteNaechsteRunde:Begin Gruppe " + (i+1) + " von " + gruppen.size() +  " Gruppengroesse: " + aktuelleGruppe.size());
 				Runde runde = getBesteRunde(aktuelleGruppe,turnier);
-				for (int j=0;j<runde.getMaxPartien();j++)
+				for (j=0;j<runde.getMaxPartien();j++)
 				{
 					Partie partie = runde.getPartie(j);
 					erg.setPartie(partie,partieNummer);
