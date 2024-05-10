@@ -326,7 +326,7 @@ public class GruppenTurnierManager implements TurnierManager
 			}
 			// Jetzt ist die Anzahl Auswertungen und damit Spieler gerade
 			// Teile nun die Auswertungen in Gruppen auf
-			int minimaleGruppenGroesse = (turnier.getNummerAktiveRunde()+2) + 4;
+			int minimaleGruppenGroesse = (turnier.getNummerAktiveRunde()+2) + Parameter.gruppenGroessenInkrement;
 			minimaleGruppenGroesse = 2 * (minimaleGruppenGroesse / 2); // gruppenGroesse muss gerage sein
 			Protokol.write("GruppenTurnierManager:starteNaechsteRunde:Minimale Gruppen Groesse: " + minimaleGruppenGroesse);
 			int anzahlGruppen = n / minimaleGruppenGroesse;

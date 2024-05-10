@@ -48,6 +48,7 @@ public class SimpleMainMenu extends Menu implements ActionListener, MainMenu
 	private JMenuItem m44 = new JMenuItem("Auto Save Directory");
 	private JMenuItem m45 = new JMenuItem("Malus Farbdifferenz2");
 	private JMenuItem m46 = new JMenuItem("Malus gleich gut");
+	private JMenuItem m47 = new JMenuItem("Gruppen Groessen Inkrement");
 	public SimpleMainMenu()
 	{
 		this.setName("SchachTurnierBastler");
@@ -76,6 +77,7 @@ public class SimpleMainMenu extends Menu implements ActionListener, MainMenu
 		m4.add(m44);
 		m4.add(m45);
 		m4.add(m46);
+		m4.add(m47);
 		menu.add(m1);
 		menu.add(m2);
 		menu.add(m3);
@@ -105,6 +107,7 @@ public class SimpleMainMenu extends Menu implements ActionListener, MainMenu
 		m44.addActionListener(this);
 		m45.addActionListener(this);
 		m46.addActionListener(this);
+		m47.addActionListener(this);
 		Locator locator = new Locator();
 		URL url = locator.getURL("tux.png");
 		Image tux = Toolkit.getDefaultToolkit().getImage(url);
@@ -500,6 +503,34 @@ public class SimpleMainMenu extends Menu implements ActionListener, MainMenu
 					Protokol.write(e.toString());
 				}
 			}	
+		}
+		if (source == m47)
+		{
+			Preferences prefs = Preferences.userRoot();
+			String gruppenInkrement = prefs.get("SchachTurnierBastler_gruppenInkrement","" + Parameter.gruppenGroessenInkrement);
+			gruppenInkrement = JOptionPane.showInputDialog("Gruppen Groessen Inkrement (Defaut 4)",gruppenInkrement);
+			if (gruppenInkrement != null)
+			{
+				try
+				{
+					int temp = Integer.parseInt(gruppenInkrement);
+					if (temp > 2 && temp < 41)
+					{
+						Parameter.gruppenGroessenInkrement = Integer.parseInt(gruppenInkrement);
+						prefs.put("SchachTurnierBastler_gruppenInkrement",gruppenInkrement);
+					}
+					else
+					{
+						Protokol.write("SimpleMainMenu:actionPerformed:m47:");
+						Protokol.write("Einstellung ausserhalb des Normalen");
+					}
+				}
+				catch (Exception e)
+				{
+					Protokol.write("SimpleMainMenu:actionPerformed:m47:Exception:");
+					Protokol.write(e.toString());
+				}
+			}
 		}
 	}
 }

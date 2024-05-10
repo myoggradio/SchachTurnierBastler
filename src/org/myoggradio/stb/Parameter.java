@@ -2,7 +2,7 @@ package org.myoggradio.stb;
 import java.util.ArrayList;
 public class Parameter 
 {
-	public static String version = "1.85 - 08.05.2024";
+	public static String version = "1.86 - 10.05.2024";
 	public static int anzahlRunden = 7;
 	public static ArrayList<Spieler> spieler = new ArrayList<Spieler>();
 	public static Turnier turnier = Factory.getTurnier();
@@ -19,5 +19,6 @@ public class Parameter
 	public static int scrheight = 500;
 	public static int reichweite = 1000;
 	public static String autoSaveDirectory = ".";
+	public static int gruppenGroessenInkrement = 4;
 	public static Thread shutdown = null;
 }
