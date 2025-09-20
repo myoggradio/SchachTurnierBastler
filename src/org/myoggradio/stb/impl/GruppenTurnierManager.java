@@ -445,7 +445,7 @@ public class GruppenTurnierManager implements TurnierManager
 				{
 					for (int c=0;c<freilos.size();c++)
 					{
-						if (freilos.get(c).istGleich(spieler)) punkte = punkte + 1.0;
+						if (freilos.get(c).istGleich(spieler)) punkte = punkte + Parameter.kampflos_schweizer;
 					}
 				}
 				for (int a=0;a<runde.getMaxPartien();a++)
