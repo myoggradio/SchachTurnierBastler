@@ -30,18 +30,42 @@ public class PartieComparator implements Comparator<Partie>
 			if (spieler.getId() == spieler2w.getId()) pos2w = i;
 			if (spieler.getId() == spieler2s.getId()) pos2s = i;
 		}
-		int pos1 = pos1s + pos1w;
-		int pos2 = pos2s + pos2w;
-		if (pos1s > pos1w) pos1s = pos1w;
-		if (pos2s > pos2w) pos2s = pos2w;
-		//
-		if (pos1 > pos2) erg = 1;
-		else if (pos2 > pos1) erg = -1;
+		int pos1h = pos1w;
+		int pos1t = pos1s;
+		if (pos1h > pos1t)
+		{
+			pos1h = pos1s;
+			pos1t = pos1w;
+		}
+		int pos2h = pos2w;
+		int pos2t = pos2s;
+		if (pos2h > pos2t)
+		{
+			pos2h = pos2s;
+			pos2t = pos2w;
+		}
+		if (pos1h > pos2h) erg = 1;
+		else if (pos2h > pos1h) erg = -1;
 		else
 		{
-			if (pos1s > pos2s) erg = 1;
-			else if (pos2s > pos1s) erg = -1;
-			else erg = 0;
+			if (pos1t > pos2t) erg = 1;
+			else if (pos2t > pos1t) erg = -1;
+			else
+			{
+				int pos1 = pos1s + pos1w;
+				int pos2 = pos2s + pos2w;
+				if (pos1s > pos1w) pos1s = pos1w;
+				if (pos2s > pos2w) pos2s = pos2w;
+				//
+				if (pos1 > pos2) erg = 1;
+				else if (pos2 > pos1) erg = -1;
+				else
+				{
+					if (pos1s > pos2s) erg = 1;
+					else if (pos2s > pos1s) erg = -1;
+					else erg = 0;
+				}
+			}
 		}
 		//Protokol.write(spieler1w.getName() + "-" + spieler1s.getName() + " " + pos1);
 		//Protokol.write(spieler2w.getName() + "-" + spieler2s.getName() + " " + pos2);

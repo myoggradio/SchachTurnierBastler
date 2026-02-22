@@ -2,6 +2,7 @@
 # SchachTurnierBastler
 #
 $Dir = $PSScriptRoot
+$Dir = "C:\git\schachturnierbastler"
 $Lib = $Dir + "\lib\*.jar"
 $jars = Get-ChildItem -Path $Lib
 foreach ($jar in $jars)
