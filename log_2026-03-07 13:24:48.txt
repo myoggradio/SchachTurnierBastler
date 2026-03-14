@@ -1,0 +1,1 @@
+2026-03-07 13:24:48 XMLSpielerLoader:read:Exception:2026-03-07 13:24:48 java.io.FileNotFoundException: ./spieler-autosave (Datei oder Verzeichnis nicht gefunden)2026-03-07 13:25:02 AutoLoader:load:Keine Datei ausgewaehlt2026-03-07 13:25:50 SimpleMainMenu:actionPerformed:m44:2026-03-07 13:25:50 /home/christian/AutoSave

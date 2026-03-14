@@ -1,8 +1,7 @@
 # SchachTurnierBastler
 
 SchachTurnierBastler dient zur Verwaltung von Schach Turnieren im KO System, Jeden gegen Jeden oder aehnlich dem Schweizer System.
-Wichtig: Die Software ist noch im fruehen Stadium der Entwicklung.
-Wichtig: Sie sollte nur fuer vereinsinterne Turniere mit hoechstens 64 Teilnehmern genutzt werden (schweizer System).
+Wichtig: Sie sollte nur fuer vereinsinterne Turniere genutzt werden (schweizer System).
 Im ersten Schritt gibt man die teilnehmenden Spieler ein.
 Danach startet man das Turnier (KO,JGJ oder schweizer). 
 Beim schweizer wird die erste Runde sofort festgelegt.
